@@ -1,0 +1,54 @@
+
+ AIM:
+ To implement adders and Subtractors using Verilog HDL
+ APPARATUSREQUIRED:
+ PCwith Windows, ModelSim software.
+ PROCEDURE:
+ • WriteanddrawtheDigital logic system.
+ • WritetheVerilogcode for above system.
+ • EntertheVerilogcode in Modelsim editor.
+ • Checkthesyntaxand simulate the above verilog code and verify the output waveform
+ as obtained
+code_hal adder
+ module half_adder(a,b,sum,carry);
+ input a,b;
+ output sum,carry;
+ xor (sum,a,b);
+ and (carry,a,b);
+ endmodule
+full adder
+ module fulladd(sum, cout, a, b, cin);
+ input a, b, cin;
+ output sum, cout;
+ wire s1, c1, c2;
+ xor g1(s1, a, b);
+ and g2 (c1, a, b);
+ xor g3(sum, s1, cin);
+ and g4(c2, s1, cin);
+ or g5(cout, c2, c1);
+ endmodule
+Half subtractor
+ module half_subtractor(a,b,difference,borrow);
+ input a,b;
+ output difference,borrow;
+ wire abar;
+ xor (difference,a,b);
+ not (abar, a)
+ and (borrow,abar,b);
+ endmodule
+ Full subtractor
+ module fullsub(D, B0, A, B, Bin);
+ input A, B, Bin;
+ output D, B0;
+ wire D1, C1, C2, C3, C4;
+ xor g1(D1, A, B);
+ not g2 (C1,A);
+ and g3(C2,C1,B);
+ xor g4(D,D1,Bin);
+ not g5 (C3, D1);
+ and g6(C4, C3, Bin);
+ or g7(B0, C2, C4);
+ endmodule
+RESULT:
+ Thus, the half adder, full adder, half subtractor and full subtractor are simulated and
+ synthesized using Verilog HDL
